@@ -1,0 +1,18 @@
+.applicant-table-row__wrapper {
+    height: 72px;
+    width: 100%;
+    background-color: white;
+    margin-top: 1px;
+}
+
+.applicant-table-row__item {
+    border-top: 1px solid #eeeeee;
+}
+
+.applicant-table-row__item:first-child {
+    padding-left: 24px;
+}
+
+.applicant-table-row__item:last-child {
+    padding-right: 24px;
+}

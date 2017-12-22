@@ -1,0 +1,19 @@
+.applicant-table-header__wrapper {
+    height: 48px;
+    background-color: white;
+}
+
+.applicant-table-header__item {
+    text-align: left;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.applicant-table-header__item:first-child {
+    padding-left: 24px;
+} 
+
+.applicant-table-header__item:last-child {
+    padding-right: 24px;
+} 
