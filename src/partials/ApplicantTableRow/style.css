@@ -2,17 +2,39 @@
     height: 72px;
     width: 100%;
     background-color: white;
-    margin-top: 1px;
 }
 
 .applicant-table-row__item {
     border-top: 1px solid #eeeeee;
-}
-
-.applicant-table-row__item:first-child {
     padding-left: 24px;
+    height: 72px;
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
 }
 
 .applicant-table-row__item:last-child {
     padding-right: 24px;
+}
+
+.applicant-table-row__item.align-right {
+    text-align: right;
+}
+
+.applicant-table-row__button-wrapper {
+    margin-left: 20px;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.applicant-table-row__button-wrapper:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.applicant-table-row__icon:before {
+    color: #909090;
+    font-size: 24px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import FontAwesome from 'react-fontawesome';
 
 import './style.css';
 import utils from '../../utils'
@@ -9,18 +10,30 @@ import constants from '../../constants';
 class ApplicantAddForm extends Component {
 
     static propTypes = {
-        person: PropTypes.object
+        onSubmit: PropTypes.func,
+        onCancel: PropTypes.func,
+        mode: PropTypes.oneOf(['add', 'edit']),
+        applicant: PropTypes.object
+    };
+
+    static defaultProps = {
+        mode: 'add',
+        applicant: {
+            name: '',
+            email: '',
+            phone: ''
+        }
     }
 
     constructor(props) {
         super(props);
 
         this.state = {
-            name: '',
-            email: '',
-            phone: '',
+            name: this.props.applicant.name,
+            email: this.props.applicant.email,
+            phone: this.props.applicant.phone,
             errors: {
-                name: false, 
+                name: false,
                 email: false,
                 phone: false
             }
@@ -37,7 +50,7 @@ class ApplicantAddForm extends Component {
         let errors = this.state.errors;
         if (this.state.errors[fieldName]) {
             errors = {
-                ...this.state.errors, 
+                ...this.state.errors,
                 [fieldName]: !this.validate(fieldName, value)
             }
         }
@@ -50,7 +63,7 @@ class ApplicantAddForm extends Component {
 
     validate(fieldName, value) {
 
-        switch(fieldName) {
+        switch (fieldName) {
             case 'name': {
                 return utils.validateName(value);
             }
@@ -60,6 +73,7 @@ class ApplicantAddForm extends Component {
             case 'phone': {
                 return utils.validatePhone(value);
             }
+            default: return true;
         }
     }
 
@@ -75,71 +89,112 @@ class ApplicantAddForm extends Component {
         let isPassing = true;
 
         _.forOwn(errors, (value, key) => {
-            if (value === false) {
+            if (value === true) {
                 isPassing = false;
             }
         });
 
-        console.log(errors);
+        if (!isPassing) {
+            this.setState({ errors });
+        }
+        else {
+            this.props.onSubmit({
+                name: this.state.name,
+                email: this.state.email,
+                phone: this.state.phone
+            });
 
-        console.log('Passing', isPassing);
-
-        this.setState({errors});
+            this.setState({
+                name: '',
+                email: '',
+                phone: ''
+            });
+        }
     }
 
-    renderErrors() {
-        let views = [];
+    renderCancel() {
+        if (this.props.mode === 'edit') {
+            return (
+                <form onSubmit={this.props.onCancel}>
+                    <input
+                        formNoValidate
+                        type="submit"
+                        className="button-cancel"
+                        value={'Cancel'}
+                    />
+                </form>
+            );
+        }
+    }
 
-        _.forOwn(this.state.errors, (value, key) => {
-            if (value === true) {
-                views.push(
-                    <span className="applicant-add-form__error">{constants.ERROR_DESCRIPTIONS[key]}</span>
-                );
-            }
-        });
+    renderSubmit() {
+        return (
+            <form onSubmit={this.onSubmit}>
+                <input
+                    formNoValidate
+                    type="submit"
+                    className="button-submit"
+                    value={this.props.mode === 'add' ? 'Add New' : 'Save'}
+                />
+            </form>
+        );
+    }
 
-        return views;
+    renderError(field) {
+
+        if (this.state.errors[field]) {
+            return (
+                <span className="applicant-add-form__error-wrapper">
+                    <FontAwesome name="exclamation-circle" />
+                    {constants.ERROR_DESCRIPTIONS[field]}
+                </span>
+            );
+        }
+
+        return null;
     }
 
     render() {
 
-        return(
-            <div className="applicant-add-form__wrapper">
-                <form className="applicant-add-form__inner" onSubmit={this.onSubmit}>
-                    <div className="applicant-add-form__left">
-                        <input 
-                            className={this.state.errors.name ? 'input-error' : ''}
-                            value={this.state.name} 
-                            onChange={(e) => this.setValue('name', e.target.value)} 
-                            type="text" 
-                            placeholder="Full Name"
-                        />
-                        <input 
-                            className={this.state.errors.email ? 'input-error' : ''}
-                            value={this.state.email} 
-                            onChange={(e) => this.setValue('email', e.target.value)} 
-                            type="email" 
-                            placeholder="E-mail Address"
-                        />
-                        <input 
-                            className={this.state.errors.phone ? 'input-error' : ''}
-                            value={this.state.phone} 
-                            onChange={(e) => this.setValue('phone', e.target.value)} 
-                            type="text" 
-                            placeholder="Phone Number"
-                        />
+        return (
+            <tr className="applicant-add-form__inner">
+                <td>
+                    <input
+                        className={this.state.errors.name ? 'input-error' : ''}
+                        value={this.state.name}
+                        onChange={(e) => this.setValue('name', e.target.value)}
+                        type="text"
+                        placeholder="Full Name"
+                    />
+                    {this.renderError('name')}
+                </td>
+                <td>
+                    <input
+                        className={this.state.errors.email ? 'input-error' : ''}
+                        value={this.state.email}
+                        onChange={(e) => this.setValue('email', e.target.value)}
+                        type="email"
+                        placeholder="E-mail Address"
+                    />
+                    {this.renderError('email')}
+                </td>
+                <td>
+                    <input
+                        className={this.state.errors.phone ? 'input-error' : ''}
+                        value={this.state.phone}
+                        onChange={(e) => this.setValue('phone', e.target.value)}
+                        type="text"
+                        placeholder="Phone Number"
+                    />
+                    {this.renderError('phone')}
+                </td>
+                <td>
+                    <div className="applicant-add-form__buttons-wrapper">
+                        {this.renderCancel()}
+                        {this.renderSubmit()}
                     </div>
-                    <div className="applicant-add-form__right">
-                        <input 
-                            formNoValidate
-                            className="applicant-add-form__submit" 
-                            type="submit" 
-                            placeholder="Phone Number"
-                            />
-                    </div>
-                </form>
-                {this.renderErrors()}
-            </div>
+                </td>
+            </tr>
         );
     }
 }

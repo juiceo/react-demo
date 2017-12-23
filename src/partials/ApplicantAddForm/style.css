@@ -1,46 +1,59 @@
-.applicant-add-form {
-    display: table;
-    width: 100%;
-}
-
 .applicant-add-form__inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     background-color: white;
     width: 100%;
+}
+
+.applicant-add-form__inner td {
+    padding: 16px 0 16px 16px;
+    border-top: 1px solid #eeeeee;
+    position: relative;
+}
+
+.applicant-add-form__error-wrapper {
     padding: 16px;
+    top: 66px;
+    left: 16px;
+    right: 0;
+    position: absolute;
+    background:#cc0000;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
+    color: #fefefe;
 }
 
-.applicant-add-form__left {
-    display: flex;
-    flex: 3;
-    flex-direction: row;
-    justify-content: flex-start
+.applicant-add-form__error-wrapper .fa {
+    margin-right: 16px;
 }
 
-.applicant-add-form__left input {
+.applicant-add-form__inner td:last-child {
+    padding: 16px 16px 16px 16px;
+    text-align: right;
+}
+
+.applicant-add-form__inner input[type=text],
+.applicant-add-form__inner input[type=email] {
     height: 40px;
     padding: 0 16px;
     background-color: #eeeeef;
     border: 1px solid #dddddd;
     outline: 0;
-    margin-right: 16px;
     flex: 1;
     font-size: 16px;
+    width: 100%;
 }
 
-.applicant-add-form__right {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-end;
+.applicant-add-form__buttons-wrapper {
+    display: block;
 }
 
-.applicant-add-form__submit {
+.applicant-add-form__buttons-wrapper form {
+    display: inline-block;
+}
+
+.applicant-add-form__buttons-wrapper input {
     height: 40px;
     font-size: 16px;
     border: 0;
+    border-radius: 0;
     padding: 0 24px;
     background-color: #dddddd;
     transition: all 0.2s ease;
@@ -48,16 +61,29 @@
     outline: 0;
 }
 
-.applicant-add-form__submit:hover {
-    background-color: #07f;
-    color: white;    
-} 
+.applicant-add-form__buttons-wrapper .button-submit {
+    background-color: #dddddd;
+    color: #fff;
+}
 
-.applicant-add-form__error {
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    color: white;
-    background-color: rgba(255,0,0,0.3);
-    padding: 16px;
+.applicant-add-form__buttons-wrapper .button-submit:hover {
+    background-color: #07f;
+    color: #fff;
+}
+
+
+.applicant-add-form__buttons-wrapper .button-cancel {
+    background-color: #dddddd;
+    color: #07f;
+}
+
+.applicant-add-form__buttons-wrapper .button-cancel:hover {
+    background-color: #bbbbbb;
+}
+
+.applicant-add-form__buttons-wrapper .button-cancel,
+.applicant-add-form__buttons-wrapper .button-submit {
+    font-weight: 500;
+    font-size: 16px;
+    margin-left: 8px;
 }

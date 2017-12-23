@@ -7,16 +7,25 @@ const utils = {
 
         let people = [];
 
-        for(let i = 0; i < amount; i++) {
-            people.push({
-                id: chance.guid(),
-                name: chance.name(),
-                email: chance.email(),
-                phone: chance.phone()
-            });
+        for (let i = 0; i < amount; i++) {
+            people.push(utils.generateApplicant(
+                chance.name(),
+                chance.email(),
+                chance.phone()
+            ));
         }
 
         return people;
+    },
+
+    generateApplicant(name, email, phone) {
+        return {
+            id: chance.guid(),
+            created: Date.now(),
+            name,
+            email,
+            phone
+        };
     },
 
     validateName(name) {

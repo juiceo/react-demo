@@ -8,11 +8,24 @@
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
+    color: #757575;
+    padding-left: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.applicant-table-header__item:first-child {
-    padding-left: 24px;
-} 
+.applicant-table-header__item.active{
+    color: #505050;
+}
+
+.applicant-table-header__item:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+
+.applicant-table-header__item .sort-icon {
+    margin-left: 16px;
+}
 
 .applicant-table-header__item:last-child {
     padding-right: 24px;
