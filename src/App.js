@@ -80,7 +80,7 @@ class App extends Component {
 			<div className="app">
 				<div className="page-header">
 					<div className="page-header__inner">
-						<img src={logo} />
+						<img alt="logo" title="logo" src={logo} />
 						<span>Nord Software</span>
 					</div>
 				</div>
