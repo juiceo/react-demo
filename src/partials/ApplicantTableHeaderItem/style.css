@@ -14,7 +14,7 @@
 }
 
 .applicant-table-header-item:hover {
-    background: rgba(0,0,0,0.1);
+    background: #eeeeee;
 }
 
 .applicant-table-header-item.placeholder {

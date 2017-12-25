@@ -30,7 +30,7 @@
 }
 
 .applicant-table-row__button-wrapper:hover {
-    background: rgba(0,0,0,0.1);
+    background:#eeeeee;
 }
 
 .applicant-table-row__icon:before {
