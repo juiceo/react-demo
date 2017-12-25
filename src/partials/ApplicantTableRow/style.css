@@ -17,7 +17,7 @@
     padding-right: 24px;
 }
 
-.applicant-table-row__item .align-right {
+.applicant-table-row__item.align-right {
     text-align: right;
 }
 
