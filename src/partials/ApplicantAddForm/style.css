@@ -22,6 +22,7 @@
     flex-direction: row;
     align-items: center;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .applicant-add-form__error-wrapper:before {
