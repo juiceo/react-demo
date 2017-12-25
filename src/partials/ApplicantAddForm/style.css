@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    z-index: 1000;
 }
 
 .applicant-add-form__error-wrapper:before {
