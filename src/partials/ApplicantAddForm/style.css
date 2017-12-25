@@ -15,9 +15,25 @@
     left: 16px;
     right: 0;
     position: absolute;
-    background:#cc0000;
+    background:#07f;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
     color: #fefefe;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.applicant-add-form__error-wrapper:before {
+    content: "";
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    
+    border-bottom: 8px solid #07f;
+    text-align: center;
+    position: absolute;
+    top: -6px;
 }
 
 .applicant-add-form__error-wrapper .fa {
@@ -59,14 +75,15 @@
     transition: all 0.2s ease;
     cursor: pointer;
     outline: 0;
+    font-weight: 400;
 }
 
 .applicant-add-form__buttons-wrapper .button-submit {
     background-color: #dddddd;
-    color: #fff;
+    color: #505050;
 }
 
-.applicant-add-form__buttons-wrapper .button-submit:hover {
+.applicant-add-form__buttons-wrapper .button-submit.active {
     background-color: #07f;
     color: #fff;
 }

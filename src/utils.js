@@ -1,5 +1,8 @@
+/* eslint-disable */
+
 let Chance = require('chance'),
     chance = new Chance();
+
 
 const utils = {
 

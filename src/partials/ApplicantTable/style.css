@@ -8,19 +8,40 @@
     opacity: 0;
 }
 
+.fade-enter ~ tr {
+    transform: translateY(-72px);
+}
+
 .fade-enter.fade-enter-active {
     opacity: 1;
+}
+
+.fade-enter.fade-enter-active ~ tr {
+    transform: translateY(0);
+}
+
+.fade-enter.fade-enter-active,
+.fade-enter.fade-enter-active ~ tr {
     transition: all 300ms ease-in-out;
-    transition-delay: 100ms;
 }
 
 .fade-leave {
     opacity: 1;
+}
+
+.fade-leave ~ tr {
     transform: translateY(0);
 }
 
 .fade-leave.fade-leave-active {
-    transform: translateY(-30px);
     opacity: 0;
+}
+
+.fade-leave.fade-leave-active ~ tr {
+    transform:  translateY(-72px);
+}
+
+.fade-leave.fade-leave-active,
+.fade-leave.fade-leave-active ~ tr {
     transition: all 250ms ease-in-out;
 }

@@ -5,11 +5,6 @@ body {
   background-color: #eeeeee;
 }
 
-.input-error {
-  border-color: red !important;
-  color: red;
-}
-
 * {
   box-sizing: border-box;
 }

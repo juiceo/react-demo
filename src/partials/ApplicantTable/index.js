@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './style.css';
 
 import ApplicantTableHeader from '../ApplicantTableHeader';
 import ApplicantTableRow from '../ApplicantTableRow';
 import ApplicantAddForm from '../ApplicantAddForm';
+
+import AnimatedTableBody from '../AnimatedTableBody';
+import GenericTable from '../GenericTable';
 
 const DEFAULT_SORT_FIELD = 'created';
 
@@ -107,13 +109,10 @@ class ApplicantTable extends Component {
         const applicants = this.sort(this.props.applicants);
 
         return (
-            <table className="applicant-table__wrapper">
-                <colgroup>
-                    <col className="col-20" />
-                    <col className="col-30" />
-                    <col className="col-22" />
-                    <col className="col-28" />
-                </colgroup>
+            <GenericTable
+                colSizes={[20, 30, 22, 28]}
+                className="applicant-table__wrapper"
+            >
                 <ApplicantTableHeader
                     sortField={this.state.sortField}
                     sortOrder={this.state.sortOrder}
@@ -134,15 +133,10 @@ class ApplicantTable extends Component {
                         null
                     ]}
                 />
-                <ReactCSSTransitionGroup
-                    transitionName="fade"
-                    transitionEnterTimeout={400}
-                    transitionLeaveTimeout={250}
-                    component="tbody"
-                >
+                <AnimatedTableBody>
                     {this.renderRows(applicants)}
-                </ReactCSSTransitionGroup>
-            </table>
+                </AnimatedTableBody>
+            </GenericTable>
         );
     }
 }

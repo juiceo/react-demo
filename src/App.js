@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.png';
 
 import utils from './utils';
 
 import ApplicantAddForm from './partials/ApplicantAddForm';
 import ApplicantTable from './partials/ApplicantTable'
+
+import GenericTable from './partials/GenericTable';
 
 class App extends Component {
 
@@ -76,18 +78,19 @@ class App extends Component {
 	render() {
 		return (
 			<div className="app">
+				<div className="page-header">
+					<div className="page-header__inner">
+						<img src={logo} />
+						<span>Nord Software</span>
+					</div>
+				</div>
 				<div className="main-wrapper">
-					<table className="form-wrapper">
-						<colgroup>
-							<col className="col-20" />
-							<col className="col-30" />
-							<col className="col-22" />
-							<col className="col-28" />
-						</colgroup>
+					<h1 className="main-title">List of participants</h1>
+					<GenericTable colSizes={[20, 30, 22, 28]}>
 						<tbody>
 							<ApplicantAddForm onSubmit={this.onAdd} />
 						</tbody>
-					</table>
+					</GenericTable>
 					<ApplicantTable
 						applicants={this.state.applicants}
 						onEditStart={this.onEditStart}

@@ -1,0 +1,31 @@
+.applicant-table-header-item {
+    text-align: left;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #757575;
+    padding-left: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.applicant-table-header-item.active{
+    color: #505050;
+}
+
+.applicant-table-header-item:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.applicant-table-header-item.placeholder {
+    pointer-events: none;
+}
+
+
+.applicant-table-header-item .sort-icon {
+    margin-left: 16px;
+}
+
+.applicant-table-header-item:last-child {
+    padding-right: 24px;
+} 

@@ -1,60 +1,35 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-fontawesome';
 import _ from 'lodash';
 
 import './style.css';
 
-class ApplicantTableHeader extends Component {
+import ApplicantTableHeaderItem from '../ApplicantTableHeaderItem';
+
+class ApplicantTableHeader extends PureComponent {
 
     static propTypes = {
         sortField: PropTypes.string,
         sortOrder: PropTypes.number,
         onSortChange: PropTypes.func.isRequired,
-        items: PropTypes.shape({
+        items: PropTypes.arrayOf(PropTypes.shape({
             label: PropTypes.string,
             field: PropTypes.string
-        })
+        }))
     }
 
     renderItems() {
-        return _.map(this.props.items, (item) => {
+        return _.map(this.props.items, (item, index) => {
 
-            if (!item) {
-                return (
-                    <th className="applicant-table-header__item"></th>
-                );
-            }
-
-            if (this.props.sortField === item.field) {
-                return (
-                    <th
-                        className="applicant-table-header__item active"
-                        onClick={() => this.props.onSortChange(item.field)}
-                    >
-                        <span className="applicant-table-header__item-inner">
-                            <span>{item.label}</span>
-                            <FontAwesome
-                                className="sort-icon"
-                                name={this.props.sortOrder === -1 ? 'long-arrow-down' : 'long-arrow-up'}
-                            />
-                        </span>
-                    </th>
-                );
-            }
-            else {
-                return (
-                    <th
-                        className="applicant-table-header__item"
-                        onClick={() => this.props.onSortChange(item.field)}
-                    >
-                        <span className="applicant-table-header__item-inner">
-                            <span>{item.label}</span>
-                        </span>
-                    </th>
-                );
-            }
-        })
+            return (
+                <ApplicantTableHeaderItem
+                    key={'col_' + index}
+                    activeSort={this.props.sortField}
+                    activeOrder={this.props.sortOrder}
+                    item={item}
+                    onClick={(item) => this.props.onSortChange(item.field)} />
+            );
+        });
     }
 
     render() {

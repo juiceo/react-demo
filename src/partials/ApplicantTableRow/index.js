@@ -8,8 +8,8 @@ class ApplicantTableRow extends Component {
 
     static propTypes = {
         applicant: PropTypes.object,
-        onEdit: PropTypes.func,
-        onDelete: PropTypes.func
+        onEditClick: PropTypes.func,
+        onDeleteClick: PropTypes.func
     }
 
     render() {

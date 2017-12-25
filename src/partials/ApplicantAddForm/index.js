@@ -128,12 +128,18 @@ class ApplicantAddForm extends Component {
     }
 
     renderSubmit() {
+
+        const { name, email, phone } = this.state;
+
+        //Lazy check fields here for visual ques, actual validation elsewhere
+        let isActive = name !== '' && email !== '' && phone !== '';
+
         return (
             <form onSubmit={this.onSubmit}>
                 <input
                     formNoValidate
                     type="submit"
-                    className="button-submit"
+                    className={isActive ? 'button-submit active' : 'button-submit'}
                     value={this.props.mode === 'add' ? 'Add New' : 'Save'}
                 />
             </form>
@@ -146,7 +152,9 @@ class ApplicantAddForm extends Component {
             return (
                 <span className="applicant-add-form__error-wrapper">
                     <FontAwesome name="exclamation-circle" />
-                    {constants.ERROR_DESCRIPTIONS[field]}
+                    <span>
+                        {constants.ERROR_DESCRIPTIONS[field]}
+                    </span>
                 </span>
             );
         }
