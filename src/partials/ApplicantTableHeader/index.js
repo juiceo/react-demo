@@ -9,13 +9,13 @@ import ApplicantTableHeaderItem from '../ApplicantTableHeaderItem';
 class ApplicantTableHeader extends PureComponent {
 
     static propTypes = {
-        sortField: PropTypes.string,
-        sortOrder: PropTypes.number,
-        onSortChange: PropTypes.func.isRequired,
         items: PropTypes.arrayOf(PropTypes.shape({
             label: PropTypes.string,
             field: PropTypes.string
-        }))
+        })),
+        onSortChange: PropTypes.func.isRequired,
+        sortField: PropTypes.string,
+        sortOrder: PropTypes.number,
     }
 
     renderItems() {

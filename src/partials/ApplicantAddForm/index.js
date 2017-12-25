@@ -10,19 +10,19 @@ import constants from '../../constants';
 class ApplicantAddForm extends Component {
 
     static propTypes = {
+        applicant: PropTypes.object,
+        mode: PropTypes.oneOf(['add', 'edit']),
         onSubmit: PropTypes.func,
         onCancel: PropTypes.func,
-        mode: PropTypes.oneOf(['add', 'edit']),
-        applicant: PropTypes.object
     };
 
     static defaultProps = {
-        mode: 'add',
         applicant: {
             name: '',
             email: '',
             phone: ''
-        }
+        },
+        mode: 'add',
     }
 
     constructor(props) {

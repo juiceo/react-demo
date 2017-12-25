@@ -16,12 +16,12 @@ const DEFAULT_SORT_FIELD = 'created';
 class ApplicantTable extends Component {
 
     static propTypes = {
-        people: PropTypes.array,
         editing: PropTypes.string,
-        onEditStart: PropTypes.func.isRequired,
+        onDelete: PropTypes.func.isRequired,
         onEditCancel: PropTypes.func.isRequired,
         onEditComplete: PropTypes.func.isRequired,
-        onDelete: PropTypes.func.isRequired
+        onEditStart: PropTypes.func.isRequired,
+        people: PropTypes.array,
     }
 
     constructor(props) {

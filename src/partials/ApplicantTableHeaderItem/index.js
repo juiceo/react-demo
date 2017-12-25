@@ -7,11 +7,11 @@ import './style.css';
 class ApplicantTableHeaderItem extends PureComponent {
 
     static propTypes = {
-        activeSort: PropTypes.string,
         activeOrder: PropTypes.number,
+        activeSort: PropTypes.string,
         item: PropTypes.shape({
+            field: PropTypes.string,
             label: PropTypes.string,
-            field: PropTypes.string
         }),
         onClick: PropTypes.func
     }

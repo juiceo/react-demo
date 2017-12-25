@@ -6,8 +6,8 @@ import './style.css';
 class GenericTable extends PureComponent {
 
     static propTypes = {
+        className: PropTypes.string,
         colSizes: PropTypes.arrayOf(PropTypes.number),
-        className: PropTypes.string
     };
 
     static defaultProps = {
