@@ -49,8 +49,8 @@
 .applicant-add-form__inner input[type=email] {
     height: 40px;
     padding: 0 16px;
-    background-color: #eeeeef;
-    border: 1px solid #dddddd;
+    background-color: #fafafa;
+    border: 1px solid #eeeeee;
     outline: 0;
     flex: 1;
     font-size: 16px;
@@ -71,7 +71,6 @@
     border: 0;
     border-radius: 0;
     padding: 0 24px;
-    background-color: #dddddd;
     transition: all 0.2s ease;
     cursor: pointer;
     outline: 0;
@@ -79,7 +78,7 @@
 }
 
 .applicant-add-form__buttons-wrapper .button-submit {
-    background-color: #dddddd;
+    background-color: #eeeeee;
     color: #505050;
 }
 
@@ -90,12 +89,12 @@
 
 
 .applicant-add-form__buttons-wrapper .button-cancel {
-    background-color: #dddddd;
+    background-color: #eeeeee;
     color: #07f;
 }
 
 .applicant-add-form__buttons-wrapper .button-cancel:hover {
-    background-color: #bbbbbb;
+    background-color: #cccccc;
 }
 
 .applicant-add-form__buttons-wrapper .button-cancel,
